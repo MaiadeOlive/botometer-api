@@ -36,13 +36,3 @@ def check_if_bot(accounts):
     for i in lista_path:
         os.remove(i)
     
-            #REFERENCIA: https://stackoverflow.com/questions/12943819/how-to-prettyprint-a-json-file
-            # Pode ser um arquivo por usuário.
-
-# RAPIDAPI_KEY 214998fdf6msh0d88b3a6034ed99p1f03ddjsncbbeb6b56ac2
-# CONSUMER_KEY vF01hHLsFK8g1IQRCxA7mOAQK
-# CONSUMER_SECRET oaDGcq4Qfqf1Uch6zlQqmWOXHnRNsCzickLsPt8cdGujO1MrS0    
-# ACCESS_TOKEN 821475274655141889-NGzyCNsxGODbGFhhsOiZODWiO4ZVFPp
-# ACCESS_TOKEN_SECRET iHNYMd95iptUYFQcQxujWVrPQ8oQhEVo2Kp4ORAtSwnNA
-
-#   /home/maia/Desktop/Projects/botometer/usuários.csv      
