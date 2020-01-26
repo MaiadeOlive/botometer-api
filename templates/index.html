@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.4/dist/css/uikit.min.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.4/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.4/dist/js/uikit-icons.min.js"></script>  
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>   
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+    <title>Check Bot</title>
+
+    <style>
+        .uk-input{
+            margin-right:-2px!important;
+        }
+    </style>
+</head>
+<body>
+    <nav class="uk-navbar-container uk-margin" uk-navbar>
+        <div class="uk-navbar-left">    
+            <a class="uk-navbar-item uk-logo uk-text-success" href="#">Botometer</a>
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav">
+                <li>
+                    <a href="#modal-config" uk-toggle>
+                        <span class="uk-icon uk-margin-small-right uk-text-primary" uk-icon="icon: cog"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- This is the modal -->
+    <div id="modal-config" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <form class="uk-form uk-grid-small uk-margin-large-top" method="post" action="{{ url_for('conf') }}" uk-grid>
+                <legend class="uk-legend uk-margin-medium-bottom"> <span class="uk-text-primary" uk-icon="icon: settings; ratio:1.2"></span> Informe as credenciais </legend>
+                <div class="uk-width-1-1">
+                    <input class="uk-input" type="text" value="" name="rapidapi_key" placeholder="rapidapi key" required="required">
+                </div>
+                <div class="uk-width-1-1">
+                    <input class="uk-input" type="text" value="" name="consumer_key" placeholder="consumer key" required="required">
+                </div>
+                <div class="uk-width-1-1">
+                    <input class="uk-input" type="text" value="" name="consumer_secret" placeholder="consumer secret" required="required">
+                </div>
+                <div class="uk-width-1-1">
+                    <input class="uk-input" type="text" value="" name="access_token" placeholder="access token" required="required">
+                </div>
+                <div class="uk-width-1-1">
+                    <input class="uk-input" type="text" value="" name="access_token_secret" placeholder="access token secret" required="required">
+                </div>
+                <p uk-margin>
+                    <button class="uk-button uk-button-success uk-width-1-1 uk-margin-small-bottom">Configurar</button>
+                </p>
+            </form>
+        </div>
+    </div>
+    
+    
+
+    <div class="uk-container uk-container-small uk-margin-large-top">
+        <form class="uk-form uk-grid-small uk-margin-large-top" uk-grid enctype='multipart/form-data' method="post" action="{{ url_for('get_twitter') }}">
+            {% if alert is defined %}
+                <div class="uk-alert-danger uk-alert" data-uk-alert>
+                    <a class="uk-alert-close uk-close"></a>
+                    <p><span class="uk-icon uk-margin-small-left uk-text-danger" uk-icon="icon: info"></span>  {{ alert }}</p>
+                </div>
+            {% elif alert2 is defined %}
+                <div class="uk-alert-success uk-alert" data-uk-alert>
+                    <a class="uk-alert-close uk-close"></a>
+                    <p><span class="uk-icon uk-margin-small-left uk-text-success"></span>{{ alert2 }}</p>
+                </div>
+            {% endif %}
+            <legend class="uk-legend uk-margin-medium-bottom"> <span class="uk-text-primary" uk-icon="icon: twitter; ratio:2"></span> Checando Bots </legend>    
+            <div class="uk-width-1-1">
+                <input class="uk-input" type="text" value="" name="screen_name" placeholder="screen_name" required="required">
+            </div>
+
+            {% if process_done is defined %}
+            <div id="process_done" class="uk-alert-success uk-alert-large" data-uk-alert>
+                <a class="uk-alert-close uk-close"></a>
+                <p>{{process_done}}</p>
+            </div> 
+            {% endif %}
+            <p uk-margin>
+                <button class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom">Get Tweets</button>
+            </p>    
+            <p uk-margin>
+                <a class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom" method="get" target="_blank" href="{{ url_for('download_zip') }}">Download Files</a>
+            </p>            
+        </form>
+        <hr uk-margin-large-bottom uk-margin-large-top>   
+    </div>
+</body>
+</html>     

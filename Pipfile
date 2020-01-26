@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+jupyter = "*"
+
+[packages]
+flask = "*"
+requests = "*"
+tweepy = "*"
+botometer = "*"
+getoldtweets3 = "*"
+unidecode = "*"
+
+[requires]
+python_version = "3.6"
