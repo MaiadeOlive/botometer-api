@@ -78,6 +78,6 @@ def download_zip():
     return send_file(path, as_attachment=True) 
     
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000, host='0.0.0.0')
+# if __name__ == '__main__':
+#     app.run(debug=True, port=5000, host='0.0.0.0')
 
