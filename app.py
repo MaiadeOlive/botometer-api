@@ -27,7 +27,8 @@ def check_credencials(f):
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    return 'server'
+    #return render_template('index.html')
 
 
 @app.route('/conf', methods=['POST'])
