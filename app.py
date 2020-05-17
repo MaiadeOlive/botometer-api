@@ -46,11 +46,11 @@ def conf():
     os.environ["ACCESS_TOKEN"] = ACCESS_TOKEN
     os.environ["ACCESS_TOKEN_SECRET"] = ACCESS_TOKEN_SECRET
 
-    alert2 = 'Sucesso'
+    alert_success = 'Sucesso'
 
     if (alert2 == ''):
 
-        return render_template('index.html', alert2=alert2)
+        return render_template('index.html', alert2=alert_success)
 
     else:
 
