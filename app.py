@@ -32,7 +32,7 @@ def index():
 @app.route('/conf', methods=['POST'])
 def conf():
 
-    alert2 = 'Sucesso'
+    alert2 = ''
 
     RAPIDAPI_KEY = request.form['rapidapi_key']
     CONSUMER_KEY = request.form['consumer_key']
@@ -46,25 +46,39 @@ def conf():
     os.environ["ACCESS_TOKEN"] = ACCESS_TOKEN
     os.environ["ACCESS_TOKEN_SECRET"] = ACCESS_TOKEN_SECRET
 
-    return render_template('index.html', alert2=alert2)
+    alert2 = 'Sucesso'
+
+    if (alert2 == ''):
+
+        return render_template('index.html', alert2=alert2)
+
+    else:
+
+        return render_template('index.html', alert2='')
+
 
 @app.route('/get_twitter', methods=['POST'])
 @check_credencials
-
 def get_twitter():
+
     process_done = ''
-    
-    render_template('index.html', process_done=process_done)
-    
-    request_screen_name = request.form['screen_name']
 
-    screen_names = request_screen_name.split(' ')
+    if (process_done == ''):
 
-    check_if_bot(screen_names)
+        request_screen_name = request.form['screen_name']
 
-    process_done = 'Download Disponível'
+        screen_names = request_screen_name.split(' ')
 
-    return render_template('index.html', process_done=process_done)
+        check_if_bot(screen_names)
+
+        process_done = 'Download Disponível'
+
+        return render_template('index.html', process_done=process_done)
+
+    else:
+
+        return render_template('index.html', process_done='')
+
 
 @app.route('/download_zip/', methods=['GET'])
 @check_credencials
@@ -72,10 +86,8 @@ def download_zip():
     d = datetime.now()
 
     path = 'requisition/' + str(d.date()) + '.zip'
-    
-    return send_file(path, as_attachment=True) 
-    
+    return send_file(path, as_attachment=True)
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=int(os.environ.get('PORT', 5000)), host='0.0.0.0')
-
