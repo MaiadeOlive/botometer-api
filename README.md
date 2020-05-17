@@ -7,7 +7,7 @@ Você precisa criar uma aplicação no Twitter para consumir a API.
 1. Acesse a url: https://developer.twitter.com/en/apps
 2. Crie um novo appicativo
 3. Selecione o motivo de uso
-4. Confirme suas informações e anote seu usuário da conta desenvolvedor: @\_MarcosMarques
+4. Confirme suas informações e anote seu usuário da conta desenvolvedor: @\_your_user
 5. Informe o País que você mora e como gostaria de ser chamado e em seguida clique em Próximo
 6. Preencha os dados solicitados
 7. Após a aprovação vá para aba "Chaves e Tokens"
